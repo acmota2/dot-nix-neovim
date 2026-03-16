@@ -15,7 +15,7 @@
   extraConfigLua = ''print("Let's code!")'';
   extraPackages = with pkgs; [
     isort
-    nixfmt-rfc-style
+    nixfmt
     prettierd
     shfmt
     yaml-language-server

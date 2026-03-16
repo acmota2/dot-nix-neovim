@@ -28,7 +28,6 @@
       extra = true;
     };
   };
-  copilot.enable = true;
   conform-nvim = {
     enable = true;
     settings = {

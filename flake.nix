@@ -20,7 +20,9 @@
       };
     in
     {
-      packages.default = nvim;
-      packages.nvim = nvim;
+      packages.${system} = {
+        default = nvim;
+        nvim = nvim;
+      };
     };
 }
