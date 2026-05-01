@@ -23,17 +23,16 @@
   };
   codecompanion = {
     enable = true;
-  };
-  settings = {
-    logLevel = "TRACE";
-    sendCode = true;
-    useDefaultActions = true;
-    useDefaultPrompts = true;
+    settings = {
+      logLevel = "TRACE";
+      sendCode = true;
+      useDefaultActions = true;
+      useDefaultPrompts = true;
 
-    adapters = {
-      http = {
-        ollama = ''
-          function()
+      adapters = {
+        http = {
+          ollama = ''
+            function()
             return require('codecompanion.adapters').extend('ollama', {
               env = {
                 url = "http://127.0.0.1:11434",
@@ -47,19 +46,20 @@
                 },
               },
             })
-          end
-        '';
+            end
+          '';
+        };
       };
-    };
-    strategies = {
-      agent = {
-        adapter = "ollama";
-      };
-      chat = {
-        adapter = "ollama";
-      };
-      inline = {
-        adapter = "ollama";
+      strategies = {
+        agent = {
+          adapter = "ollama";
+        };
+        chat = {
+          adapter = "ollama";
+        };
+        inline = {
+          adapter = "ollama";
+        };
       };
     };
   };
