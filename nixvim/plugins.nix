@@ -21,6 +21,48 @@
       cmp-buffer.enable = true;
     };
   };
+  codecompanion = {
+    enable = true;
+  };
+  settings = {
+    logLevel = "TRACE";
+    sendCode = true;
+    useDefaultActions = true;
+    useDefaultPrompts = true;
+
+    adapters = {
+      http = {
+        ollama = ''
+          function()
+            return require('codecompanion.adapters').extend('ollama', {
+              env = {
+                url = "http://127.0.0.1:11434",
+              },
+              schema = {
+                model = {
+                  default = 'qwen2.5-coder:latest',
+                },
+                num_ctx = {
+                  default = 32768,
+                },
+              },
+            })
+          end
+        '';
+      };
+    };
+    strategies = {
+      agent = {
+        adapter = "ollama";
+      };
+      chat = {
+        adapter = "ollama";
+      };
+      inline = {
+        adapter = "ollama";
+      };
+    };
+  };
   comment = {
     enable = true;
     settings.mappings = {

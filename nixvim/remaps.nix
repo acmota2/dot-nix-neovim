@@ -29,6 +29,25 @@
       noremap = true;
     };
   }
+
+  # diffing
+  {
+    mode = "n";
+    key = "]c";
+    action = "]c";
+    options = {
+      desc = "Next diff change";
+    };
+  }
+  {
+    mode = "n";
+    key = "[c";
+    action = "[c";
+    options = {
+      desc = "Previous diff change";
+    };
+  }
+
   # basically, Alt arrows of vscode re-imagined for vim, enhanced
   {
     mode = "v";
@@ -42,6 +61,7 @@
     options.silent = true;
     action = ":'<,'>m '<-2<C-R>v<CR>gv=gv";
   }
+
   # n - next, N - previous (searching terms)
   {
     mode = "n";
@@ -54,5 +74,43 @@
     key = "N";
     options.silent = true;
     action = "Nzzzv";
+  }
+
+  # codecompanion remaps
+  {
+    mode = [
+      "n"
+      "v"
+    ];
+    key = "<LocalLeader>ca";
+    action = "<cmd>CodeCompanionActions<cr>";
+    options = {
+      silent = true;
+      noremap = true;
+      desc = "CodeCompanion Actions";
+    };
+  }
+  {
+    mode = [
+      "n"
+      "v"
+    ];
+    key = "<LocalLeader>cc";
+    action = "<cmd>CodeCompanion<cr>";
+    options = {
+      silent = true;
+      noremap = true;
+      desc = "CodeCompanion Inline Assistant";
+    };
+  }
+  {
+    mode = "n";
+    key = "<LocalLeader>cb";
+    action = "<cmd>CodeCompanionChat Toggle<cr>";
+    options = {
+      silent = true;
+      noremap = true;
+      desc = "CodeCompanion Chat Buffer";
+    };
   }
 ]

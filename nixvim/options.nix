@@ -15,4 +15,5 @@
   termguicolors = true;
   # more elegant scrolling
   scrolloff = 12;
+  diffopt = "internal,filler,closeoff,linematch:60,algorithm:histogram";
 }
