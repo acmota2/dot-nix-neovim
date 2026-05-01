@@ -30,53 +30,58 @@
       useDefaultPrompts = true;
 
       adapters = {
-        # We define two named adapters using your raw Lua logic
-        ollama_chat = ''
-          function()
-            return require('codecompanion.adapters').extend('ollama', {
-              env = {
-                url = "http://127.0.0.1:11434",
-              },
-              schema = {
-                model = {
-                  default = 'qwen2.5-coder:7b-instruct',
-                },
-                num_ctx = {
-                  default = 32768,
-                },
-              },
-            })
-          end
-        '';
+        http = {
+          ollama_heavy = {
+            __raw = ''
+              function()
+                return require('codecompanion.adapters').extend('ollama', {
+                  env = {
+                    url = "http://127.0.0.1:11434",
+                  },
+                  schema = {
+                    model = {
+                      default = 'qwen2.5-coder:7b-instruct',
+                    },
+                    num_ctx = {
+                      default = 32768,
+                    },
+                  },
+                })
+              end
+            '';
+          };
 
-        ollama_inline = ''
-          function()
-            return require('codecompanion.adapters').extend('ollama', {
-              env = {
-                url = "http://127.0.0.1:11434",
-              },
-              schema = {
-                model = {
-                  default = 'qwen2.5-coder:1.5b-base',
-                },
-                num_ctx = {
-                  default = 8192,
-                },
-              },
-            })
-          end
-        '';
+          ollama_light = {
+            __raw = ''
+              function()
+                return require('codecompanion.adapters').extend('ollama', {
+                  env = {
+                    url = "http://127.0.0.1:11434",
+                  },
+                  schema = {
+                    model = {
+                      default = 'qwen2.5-coder:1.5b-base',
+                    },
+                    num_ctx = {
+                      default = 8192, # Faster context processing for inline
+                    },
+                  },
+                })
+              end
+            '';
+          };
+        };
       };
 
       strategies = {
         agent = {
-          adapter = "ollama_chat";
+          adapter = "ollama_heavy";
         };
         chat = {
-          adapter = "ollama_chat";
+          adapter = "ollama_heavy";
         };
         inline = {
-          adapter = "ollama_inline";
+          adapter = "ollama_light";
         };
       };
     };
