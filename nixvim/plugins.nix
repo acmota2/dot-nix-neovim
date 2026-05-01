@@ -63,7 +63,7 @@
                       default = 'qwen2.5-coder:1.5b-base',
                     },
                     num_ctx = {
-                      default = 8192, # Faster context processing for inline
+                      default = 8192,
                     },
                   },
                 })
