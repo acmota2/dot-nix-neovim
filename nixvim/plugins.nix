@@ -30,35 +30,53 @@
       useDefaultPrompts = true;
 
       adapters = {
-        http = {
-          ollama = ''
-            function()
+        # We define two named adapters using your raw Lua logic
+        ollama_chat = ''
+          function()
             return require('codecompanion.adapters').extend('ollama', {
               env = {
                 url = "http://127.0.0.1:11434",
               },
               schema = {
                 model = {
-                  default = 'qwen2.5-coder:latest',
+                  default = 'qwen2.5-coder:7b-instruct',
                 },
                 num_ctx = {
                   default = 32768,
                 },
               },
             })
-            end
-          '';
-        };
+          end
+        '';
+
+        ollama_inline = ''
+          function()
+            return require('codecompanion.adapters').extend('ollama', {
+              env = {
+                url = "http://127.0.0.1:11434",
+              },
+              schema = {
+                model = {
+                  default = 'qwen2.5-coder:1.5b-base',
+                },
+                num_ctx = {
+                  default = 8192,
+                },
+              },
+            })
+          end
+        '';
       };
+
       strategies = {
         agent = {
-          adapter = "ollama";
+          adapter = "ollama_chat";
         };
         chat = {
-          adapter = "ollama";
+          adapter = "ollama_chat";
         };
         inline = {
-          adapter = "ollama";
+          adapter = "ollama_inline";
         };
       };
     };
