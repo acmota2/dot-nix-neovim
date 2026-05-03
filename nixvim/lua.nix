@@ -1,16 +1,13 @@
-_: {
+{ pkgs, ... }:
+{
   extraConfigLua = ''
-    print("Let's code!")
-
-    -- mcphub config
     require("mcphub").setup({
-      cmd = "npx",
-      cmd_args = { "-y", "mcp-hub" },
+      cmd = "mcp-hub", 
       port = 20202,
       use_bundled_binary = false,
       servers = {
         filesystem = {
-          command = "npx",
+          command = "${pkgs.nodejs_24}/bin/npx", 
           args = {
             "-y",
             "@modelcontextprotocol/server-filesystem",

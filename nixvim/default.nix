@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, ... }@inputs:
+let
+  mcp-hub-bin = pkgs.writeShellScriptBin "mcp-hub" ''
+    exec ${pkgs.nodejs_24}/bin/npx -y mcp-hub@latest "$@"
+  '';
+in
 {
   globals.mapleader = ",";
   keymaps = import ./remaps.nix;
@@ -12,26 +17,11 @@
     enable = true;
     settings.style = "night";
   };
-  extraConfigLua = ''
-    print("Let's code!")
-    require("mcphub").setup({
-      port = 20202,
-      use_bundled_binary = false,
-      servers = {
-        filesystem = {
-          command = "npx",
-          args = {
-            "-y",
-            "@modelcontextprotocol/server-filesystem",
-            vim.fs.root(0, { ".git" }) or vim.fn.getcwd()
-          }
-        }
-      }
-    })
-  '';
+  extraConfigLua = (import ./lua.nix inputs).extraConfigLua;
   extraPackages = with pkgs; [
     isort
     nixfmt
+    mcp-hub-bin
     prettierd
     shfmt
     yaml-language-server
