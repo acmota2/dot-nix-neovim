@@ -82,7 +82,7 @@
       "n"
       "v"
     ];
-    key = "<LocalLeader>ca";
+    key = "<leader>ca";
     action = "<cmd>CodeCompanionActions<cr>";
     options = {
       silent = true;
@@ -95,7 +95,7 @@
       "n"
       "v"
     ];
-    key = "<LocalLeader>cc";
+    key = "<leader>cc";
     action = "<cmd>CodeCompanion<cr>";
     options = {
       silent = true;
@@ -105,7 +105,7 @@
   }
   {
     mode = "n";
-    key = "<LocalLeader>cb";
+    key = "<leader>cb";
     action = "<cmd>CodeCompanionChat Toggle<cr>";
     options = {
       silent = true;

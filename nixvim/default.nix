@@ -12,12 +12,31 @@
     enable = true;
     settings.style = "night";
   };
-  extraConfigLua = ''print("Let's code!")'';
+  extraConfigLua = ''
+    print("Let's code!")
+    require("mcphub").setup({
+      port = 20202,
+      use_bundled_binary = false,
+      servers = {
+        filesystem = {
+          command = "npx",
+          args = {
+            "-y",
+            "@modelcontextprotocol/server-filesystem",
+            vim.fs.root(0, { ".git" }) or vim.fn.getcwd()
+          }
+        }
+      }
+    })
+  '';
   extraPackages = with pkgs; [
     isort
     nixfmt
     prettierd
     shfmt
     yaml-language-server
+  ];
+  extraPlugins = with pkgs; [
+    vimPlugins.mcphub-nvim
   ];
 }

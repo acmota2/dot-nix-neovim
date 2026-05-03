@@ -24,6 +24,29 @@
   codecompanion = {
     enable = true;
     settings = {
+      display = {
+        chat = {
+          window = {
+            layout = "vertical";
+            position = "right";
+            width = 0.35;
+            height = 0.4;
+          };
+        };
+      };
+
+      extensions = {
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion";
+          opts = {
+            port = 20202;
+            make_vars = true;
+            make_slash_commands = true;
+            show_result_in_chat = true;
+          };
+        };
+      };
+
       logLevel = "TRACE";
       sendCode = true;
       useDefaultActions = true;
