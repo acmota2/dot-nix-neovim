@@ -142,43 +142,7 @@
   diffview.enable = true;
   helm.enable = true;
   lsp-lines.enable = true;
-  lsp-status = {
-    enable = true;
-    settings.diagnostics = false;
-  };
   lsp-signature.enable = true;
-  lsp = {
-    enable = true;
-    inlayHints = true;
-    keymaps = {
-      lspBuf = {
-        "<leader>rn" = "rename";
-        "gd" = "definition";
-      };
-    };
-    servers = {
-      rust_analyzer = {
-        enable = true;
-        installCargo = false;
-        installRustc = false;
-      };
-      # hls.enable = true;
-      clangd.enable = true;
-      gopls.enable = true;
-      html.enable = true;
-      htmx.enable = true;
-      hyprls.enable = true;
-      lua_ls.enable = true;
-      just.enable = true;
-      markdown_oxide.enable = true;
-      nixd.enable = true;
-      pylsp.enable = true;
-      svelte.enable = true;
-      ts_ls.enable = true;
-      yamlls.enable = true;
-      zls.enable = true;
-    };
-  };
   lualine.enable = true;
   markdown-preview.enable = true;
   neo-tree.enable = true;

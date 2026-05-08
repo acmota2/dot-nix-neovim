@@ -29,4 +29,5 @@ in
   extraPlugins = with pkgs; [
     vimPlugins.mcphub-nvim
   ];
+  lsp = import ./lsp.nix;
 }
