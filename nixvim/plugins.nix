@@ -9,16 +9,31 @@
         "<C-Space>" = "cmp.mapping.complete()";
         "<C-e>" = "cmp.mapping.abort()";
         "<CR>" = "cmp.mapping.confirm({ select = true })";
+        "<C-n>" = "cmp.mapping.select_next_item()";
+        "<C-p>" = "cmp.mapping.select_prev_item()";
+        "<C-y>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })";
       };
       autoEnableSources = true;
+      completion = {
+        completeopt = "menu,menuone,noinsert";
+      };
+      experimental = {
+        ghost_text = true;
+      };
       sources = [
-        { name = "nvim_lsp"; }
-        { name = "path"; }
-        { name = "buffer"; }
+        { name = "nvim_lsp"; priority = 100; }
+        { name = "luasnip"; priority = 90; }
+        { name = "path"; priority = 80; }
+        { name = "buffer"; priority = 70; }
+        { name = "calc"; priority = 60; }
+        { name = "emoji"; priority = 50; }
       ];
       cmp-nvim-lsp.enable = true;
+      cmp-luasnip.enable = true;
       cmp-path.enable = true;
       cmp-buffer.enable = true;
+      cmp-calc.enable = true;
+      cmp-emoji.enable = true;
     };
   };
 
