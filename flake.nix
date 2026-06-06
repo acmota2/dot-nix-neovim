@@ -6,25 +6,8 @@
     nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs =
-    { nixpkgs, nixvim, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      nvim = nixvim.legacyPackages.${system}.makeNixvim {
-        inherit pkgs;
-        modules = [ ./modules/my-nixvim.nix ];
-      };
-    in
-    {
-      packages.${system} = {
-        default = nvim;
-        nvim = nvim;
-      };
-      nixosModules.my-nixvim = import ./modules/my-nixvim.nix;
-      homeManagerModules.my-nixvim = import ./modules/my-nixvim.nix;
-    };
+  outputs = _: {
+    nixosModules.my-nixvim = import ./modules/my-nixvim.nix;
+    # homeManagerModules.my-nixvim = import ./modules/my-nixvim.nix;
+  };
 }
