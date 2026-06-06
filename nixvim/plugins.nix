@@ -21,12 +21,30 @@
         ghost_text = true;
       };
       sources = [
-        { name = "nvim_lsp"; priority = 100; }
-        { name = "luasnip"; priority = 90; }
-        { name = "path"; priority = 80; }
-        { name = "buffer"; priority = 70; }
-        { name = "calc"; priority = 60; }
-        { name = "emoji"; priority = 50; }
+        {
+          name = "nvim_lsp";
+          priority = 100;
+        }
+        {
+          name = "luasnip";
+          priority = 90;
+        }
+        {
+          name = "path";
+          priority = 80;
+        }
+        {
+          name = "buffer";
+          priority = 70;
+        }
+        {
+          name = "calc";
+          priority = 60;
+        }
+        {
+          name = "emoji";
+          priority = 50;
+        }
       ];
       cmp-nvim-lsp.enable = true;
       cmp-luasnip.enable = true;
@@ -155,6 +173,7 @@
     };
   };
   diffview.enable = true;
+  gitsigns.enable = true;
   helm.enable = true;
   lsp-lines.enable = true;
   lsp-signature.enable = true;
