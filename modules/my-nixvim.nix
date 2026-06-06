@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ config, lib, ... }:
 {
   imports = [ ../nixvim ];
 
