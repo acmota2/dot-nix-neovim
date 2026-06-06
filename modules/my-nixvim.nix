@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 let
   cfg = config.programs.my-nixvim;
 in
@@ -7,7 +7,7 @@ in
     enable = lib.mkEnableOption "my-nixvim";
     settings = lib.mkOption {
       type = lib.types.attrs;
-      default = {};
+      default = { };
       description = "Nixvim module configuration overrides";
     };
   };
@@ -15,9 +15,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
-      # Import your default configuration
       imports = [ ../nixvim ];
-      # Merge user settings (overrides defaults)
-    } // cfg.settings;
+    }
+    // cfg.settings;
   };
 }
