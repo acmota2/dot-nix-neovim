@@ -41,10 +41,6 @@ in
           name = "buffer";
           priority = 70;
         }
-        {
-          name = "calc";
-          priority = 60;
-        }
       ];
       cmp-nvim-lsp.enable = true;
       cmp-luasnip.enable = true;
