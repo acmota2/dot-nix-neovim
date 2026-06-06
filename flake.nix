@@ -24,5 +24,7 @@
         default = nvim;
         nvim = nvim;
       };
+      nixosModules.my-nixvim = import ./modules/my-nixvim.nix;
+      homeManagerModules.my-nixvim = import ./modules/my-nixvim.nix;
     };
 }

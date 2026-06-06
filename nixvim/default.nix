@@ -8,7 +8,9 @@ in
   globals.mapleader = ",";
   keymaps = import ./remaps.nix;
   opts = import ./options.nix;
-  plugins = import ./plugins.nix;
+  imports = [
+    ./plugins.nix
+  ];
   diagnostic.settings = {
     virtual_lines.current_line = true;
     virtual_text = true;
