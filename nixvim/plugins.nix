@@ -45,10 +45,6 @@ in
           name = "calc";
           priority = 60;
         }
-        {
-          name = "emoji";
-          priority = 50;
-        }
       ];
       cmp-nvim-lsp.enable = true;
       cmp-luasnip.enable = true;
