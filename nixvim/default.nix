@@ -10,11 +10,9 @@ let
   '';
 in
 {
-  options.programs.my-nixvim = {
-    settings = {
-      enable = lib.mkEnableOption "Enable settings";
-      llm-integration.enable = lib.mkEnableOption "Enable llm integration";
-    };
+  options.programs.my-nixvim.settings = {
+    enable = lib.mkEnableOption "Enable my-nixvim settings";
+    llm-integration.enable = lib.mkEnableOption "Enable LLM integration";
   };
 
   config = {
