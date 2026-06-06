@@ -34,7 +34,7 @@ in
 
       extraConfigLua = import ./lua.nix inputs;
 
-      plugins = import ./plugins.nix inputs;
+      plugins = lib.mkIf config.programs.my-nixvim.settings.enable import ./plugins.nix inputs;
 
       extraPackages = with pkgs; [
         isort
