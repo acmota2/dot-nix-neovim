@@ -16,39 +16,42 @@ in
   };
 
   config = lib.mkIf config.programs.my-nixvim.enable {
-    globals.mapleader = ",";
-    keymaps = import ./remaps.nix;
-    opts = import ./options.nix;
-
-    diagnostic.settings = {
-      virtual_lines.current_line = true;
-      virtual_text = true;
-    };
-
-    colorschemes.tokyonight = {
+    programs.nixvim = {
       enable = true;
-      settings.style = "night";
+      globals.mapleader = ",";
+      keymaps = import ./remaps.nix;
+      opts = import ./options.nix;
+
+      diagnostic.settings = {
+        virtual_lines.current_line = true;
+        virtual_text = true;
+      };
+
+      colorschemes.tokyonight = {
+        enable = true;
+        settings.style = "night";
+      };
+
+      extraConfigLua = import ./lua.nix inputs;
+
+      plugins = lib.mkIf config.programs.my-nixvim.settings.llm-integration.enable (
+        import ./plugins.nix inputs
+      );
+
+      extraPackages = with pkgs; [
+        isort
+        nixfmt
+        mcp-hub-bin
+        prettierd
+        shfmt
+        yaml-language-server
+      ];
+
+      extraPlugins = with pkgs; [
+        vimPlugins.mcphub-nvim
+      ];
+
+      lsp = import ./lsp.nix;
     };
-
-    extraConfigLua = import ./lua.nix inputs;
-
-    plugins = lib.mkIf config.programs.my-nixvim.settings.llm-integration.enable (
-      import ./plugins.nix inputs
-    );
-
-    extraPackages = with pkgs; [
-      isort
-      nixfmt
-      mcp-hub-bin
-      prettierd
-      shfmt
-      yaml-language-server
-    ];
-
-    extraPlugins = with pkgs; [
-      vimPlugins.mcphub-nvim
-    ];
-
-    lsp = import ./lsp.nix;
   };
 }
