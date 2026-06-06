@@ -14,9 +14,9 @@
         inherit system;
         config.allowUnfree = true;
       };
-      nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+      nvim = nixvim.legacyPackages.${system}.makeNixvim {
         inherit pkgs;
-        module = import ./modules/my-nixvim.nix;
+        modules = [ ./modules/my-nixvim.nix ];
       };
     in
     {

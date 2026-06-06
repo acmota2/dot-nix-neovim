@@ -11,9 +11,7 @@
     };
   };
 
-  config =
-    lib.mkIf config.programs.my-nixvim.enable {
-      programs.neovim.enable = true;
-    }
-    // config.programs.my-nixvim.settings;
+  config = lib.mkIf config.programs.my-nixvim.enable {
+    programs.neovim.enable = true;
+  };
 }
