@@ -197,7 +197,7 @@ in
       "<leader>ff" = "find_files";
       "<leader>b" = "buffers";
       "<leader>rg" = "live_grep";
-      # "<leader>e" = "file_browser";
+      "<leader>e" = "file_browser";
       "<leader>u" = "undo";
     };
     extensions = {
