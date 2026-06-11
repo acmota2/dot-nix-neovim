@@ -29,7 +29,14 @@ in
 
       colorschemes.tokyonight = {
         enable = true;
-        settings.style = "night";
+        settings = {
+          style = "night";
+          transparent = true;
+          styles = {
+            sidebars = "transparent";
+            floats = "transparent";
+          };
+        };
       };
 
       extraConfigLua = import ./lua.nix inputs;
