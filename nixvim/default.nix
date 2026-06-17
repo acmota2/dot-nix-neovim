@@ -45,10 +45,10 @@ in
 
       extraPackages = with pkgs; [
         isort
-        nixfmt
         mcp-hub-bin
         prettierd
         shfmt
+        statix
         yaml-language-server
       ];
 
