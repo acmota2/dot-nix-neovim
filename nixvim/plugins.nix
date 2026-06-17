@@ -152,9 +152,9 @@ in
         htmlmixed = [ "biome" ];
         javascript = [ "biome" ];
         javascriptreact = [ "biome" ];
-        json = [ "prettierd" ];
+        json = [ "biome" ];
         lua = [ "stylua" ];
-        nix = [ "nixfmt" ];
+        nix = [ "statix" ];
         python = [ "black" ];
         rust = [ "rustfmt" ];
         sh = [ "shfmt" ];
@@ -193,6 +193,7 @@ in
   spectre.enable = true;
   telescope = {
     enable = true;
+    hidden = true;
     keymaps = {
       "<leader>ff" = "find_files";
       "<leader>b" = "buffers";
@@ -201,7 +202,7 @@ in
       "<leader>u" = "undo";
     };
     extensions = {
-      # file-browser.enable = true;
+      file-browser.enable = true;
       undo.enable = true;
     };
   };
