@@ -171,7 +171,13 @@ in
   diffview.enable = true;
   gitsigns.enable = true;
   helm.enable = true;
-  lsp-lines.enable = true;
+  lsp-lines = {
+    enable = true;
+    settings = {
+      max_length = 100;
+      wrap = true;
+    };
+  };
   lsp-signature.enable = true;
   lualine.enable = true;
   markdown-preview.enable = true;
