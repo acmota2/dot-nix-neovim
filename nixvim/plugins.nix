@@ -154,7 +154,7 @@ in
         javascriptreact = [ "biome" ];
         json = [ "biome" ];
         lua = [ "stylua" ];
-        nix = [ "statix" ];
+        nix = [ "nixfmt" ];
         python = [ "black" ];
         rust = [ "rustfmt" ];
         sh = [ "shfmt" ];
