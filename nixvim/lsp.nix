@@ -30,13 +30,7 @@
   servers = {
     rust_analyzer.enable = true;
     # hls.enable = true;
-    clangd = {
-      enable = true;
-      config.cmd = [
-        "clangd"
-        "-extra-arg=-Iinclude"
-      ];
-    };
+    clangd.enable = true;
     gopls.enable = true;
     html.enable = true;
     htmx = {
