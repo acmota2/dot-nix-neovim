@@ -140,6 +140,11 @@ in
   conform-nvim = {
     enable = true;
     settings = {
+      formatters = {
+        clang-format.prepend_args = [
+          "-style=file"
+        ];
+      };
       formatters_by_ft = {
         bash = [ "shfmt" ];
         c = [ "clang-format" ];
