@@ -140,11 +140,6 @@ in
   conform-nvim = {
     enable = true;
     settings = {
-      formatters = {
-        clang-format.prepend_args = [
-          "-style={BasedOnStyle: LLVM, IndentWidth: 4, AllowShortFunctionsOnASingleLine: None}"
-        ];
-      };
       formatters_by_ft = {
         bash = [ "shfmt" ];
         c = [ "clang-format" ];
