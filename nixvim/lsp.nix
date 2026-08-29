@@ -22,13 +22,21 @@
     {
       key = "<leader>ca";
       lspBufAction = "code_action";
-      options = { desc = "LSP Code Actions"; };
+      options = {
+        desc = "LSP Code Actions";
+      };
     }
   ];
   servers = {
     rust_analyzer.enable = true;
     # hls.enable = true;
-    clangd.enable = true;
+    clangd = {
+      enable = true;
+      cmd = [
+        "clangd"
+        "-extra-arg=-Iinclude"
+      ];
+    };
     gopls.enable = true;
     html.enable = true;
     htmx = {
