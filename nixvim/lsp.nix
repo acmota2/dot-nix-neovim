@@ -32,7 +32,7 @@
     # hls.enable = true;
     clangd = {
       enable = true;
-      cmd = [
+      config.cmd = [
         "clangd"
         "-extra-arg=-Iinclude"
       ];
