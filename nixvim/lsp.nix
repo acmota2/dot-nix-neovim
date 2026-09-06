@@ -1,15 +1,5 @@
 {
   inlayHints.enable = true;
-  diagnostics = {
-    update_in_insert = true;
-    virtual_text = {
-      enable = true;
-      prefix = "●";
-      separate_lines = false;
-    };
-    underline = true;
-    signs = true;
-  };
   keymaps = [
     {
       key = "<leader>rn";

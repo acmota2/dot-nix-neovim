@@ -181,17 +181,10 @@ in
   diffview.enable = true;
   gitsigns.enable = true;
   helm.enable = true;
-  lsp-lines = {
-    enable = true;
-    settings = {
-      max_length = 100;
-      wrap = true;
-    };
-  };
+  lsp-lines.enable = true;
   lsp-signature.enable = true;
   lualine.enable = true;
   markdown-preview.enable = true;
-  neo-tree.enable = true;
   nix.enable = true;
   nix-develop.enable = true;
   oil = {
@@ -209,7 +202,13 @@ in
   spectre.enable = true;
   telescope = {
     enable = true;
-    hidden = true;
+    extensions = {
+      file-browser = {
+        enable = true;
+        settings.hidden = true;
+      };
+      undo.enable = true;
+    };
     keymaps = {
       "<leader>ff" = "find_files";
       "<leader>b" = "buffers";
@@ -217,10 +216,7 @@ in
       "<leader>e" = "file_browser";
       "<leader>u" = "undo";
     };
-    extensions = {
-      file-browser.enable = true;
-      undo.enable = true;
-    };
+    settings.pickers.find_files.hidden = true;
   };
   treesitter = {
     enable = true;

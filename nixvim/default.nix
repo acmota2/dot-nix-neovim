@@ -10,16 +10,23 @@ let
   '';
 in
 {
-  options.my-nixvim.settings = {
-    enable = lib.mkEnableOption {
+  options.programs.my-nixvim = {
+    enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Enable my-nixvim settings";
+      description = "Enable my-nixvim";
     };
-    llm-integration.enable = lib.mkEnableOption "Enable LLM integration";
+    settings = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Enable my-nixvim settings";
+      };
+      llm-integration.enable = lib.mkEnableOption "Enable LLM integration";
+    };
   };
 
-  config = {
+  config = lib.mkIf config.programs.my-nixvim.enable {
     globals.mapleader = ",";
     keymaps = import ./remaps.nix;
     opts = import ./options.nix;
@@ -38,6 +45,9 @@ in
     diagnostic.settings = {
       virtual_lines.current_line = true;
       virtual_text = true;
+      update_in_insert = true;
+      underline = true;
+      signs = true;
     };
 
     colorschemes.tokyonight = {
@@ -52,9 +62,10 @@ in
       };
     };
 
-    extraConfigLua = import ./lua.nix;
-
-    plugins = lib.mkIf config.my-nixvim.settings.enable (import ./plugins.nix);
+    extraConfigLua = import ./lua.nix { inherit pkgs lib config; };
+    plugins = lib.mkIf config.programs.my-nixvim.settings.enable (
+      import ./plugins.nix { inherit pkgs lib config; }
+    );
 
     extraPackages = with pkgs; [
       isort
