@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   settingsCfg = config.programs.my-nixvim.settings;
 in
@@ -219,8 +224,8 @@ in
   };
   treesitter = {
     enable = true;
+    grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
     settings = {
-      autoInstall = true;
       highlight.enable = true;
     };
   };
