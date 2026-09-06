@@ -5,7 +5,7 @@
   ...
 }:
 let
-  settingsCfg = config.programs.my-nixvim.settings;
+  settingsCfg = config.my-nixvim.settings;
 in
 {
   colorizer.enable = true;

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:
-lib.mkIf config.programs.my-nixvim.settings.llm-integration.enable ''
+lib.mkIf config.my-nixvim.settings.llm-integration.enable ''
   require("mcphub").setup({
     cmd = "mcp-hub", 
     port = 20202,
