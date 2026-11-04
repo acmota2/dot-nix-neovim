@@ -11,7 +11,6 @@ in
         default = true;
         description = "Enable my-nixvim settings";
       };
-      llm-integration.enable = lib.mkEnableOption "Enable LLM integration";
     };
   };
 
@@ -19,10 +18,7 @@ in
     programs.nixvim = {
       enable = true;
       imports = [ ../nixvim ];
-      my-nixvim.settings = {
-        enable = cfg.settings.enable;
-        llm-integration.enable = cfg.settings.llm-integration.enable;
-      };
+      my-nixvim.settings.enable = cfg.settings.enable;
     };
   };
 }
