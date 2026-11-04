@@ -59,7 +59,6 @@ in
       };
     };
 
-    extraConfigLua = import ./lua.nix { inherit pkgs lib config; };
     plugins = lib.mkIf config.my-nixvim.settings.enable (
       import ./plugins.nix { inherit pkgs lib config; }
     );
