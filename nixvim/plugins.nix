@@ -1,12 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-let
-  settingsCfg = config.my-nixvim.settings;
-in
+{ pkgs, ... }:
 {
   colorizer.enable = true;
   cmp = {
@@ -55,86 +47,6 @@ in
       cmp-emoji.enable = true;
     };
   };
-
-  codecompanion = lib.mkIf settingsCfg.llm-integration.enable {
-    enable = true;
-    settings = {
-      display.chat = {
-        show_reasoning = false;
-        window = {
-          layout = "vertical";
-          position = "right";
-          width = 0.35;
-          height = 0.4;
-        };
-      };
-
-      # MCP Extensions
-      extensions.mcphub = {
-        callback = "mcphub.extensions.codecompanion";
-        opts = {
-          port = 20202;
-          make_vars = false;
-          make_slash_commands = false;
-          show_result_in_chat = true;
-        };
-      };
-
-      logLevel = "TRACE";
-      sendCode = true;
-      useDefaultActions = true;
-      useDefaultPrompts = true;
-
-      adapters.http.ollama_tools.__raw = ''
-        function()
-          return require('codecompanion.adapters').extend('openai', {
-            url = "http://127.0.0.1:11434/v1/chat/completions",
-            env = {
-              api_key = "ollama",
-            },
-            schema = {
-              model = {
-                default = "llama3.1:8b",
-              },
-            },
-          })
-        end
-      '';
-
-      strategies = {
-        agent = {
-          adapter = "ollama_tools";
-          prompts.system_prompt.__raw = ''
-            function()
-              local status, mcphub = pcall(require, "mcphub")
-              if status then
-                local hub = mcphub.get_hub_instance()
-                if hub then
-                  return hub:get_active_servers_prompt()
-                end
-              end
-              return "You are an AI assistant."
-            end
-          '';
-        };
-        chat.adapter = "ollama_tools";
-        inline = {
-          adapter = "ollama_tools";
-          placement = "buffer";
-          prompts.system_prompt = ''
-            You are an expert AI programming assistant.
-            The user wants to replace their selected code with your output.
-
-            CRITICAL RULES:
-            1. You MUST wrap your code replacement in a markdown code block matching the file's language.
-            2. Do NOT add any explanations, introductory text, or closing remarks.
-            3. Output ONLY the code block.
-          '';
-        };
-      };
-    };
-  };
-
   comment = {
     enable = true;
     settings.mappings = {

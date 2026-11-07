@@ -4,11 +4,6 @@
   pkgs,
   ...
 }:
-let
-  mcp-hub-bin = pkgs.writeShellScriptBin "mcp-hub" ''
-    exec ${pkgs.nodejs_24}/bin/npx -y mcp-hub@latest "$@"
-  '';
-in
 {
   options.my-nixvim = {
     enable = lib.mkOption {
@@ -65,7 +60,6 @@ in
 
     extraPackages = with pkgs; [
       isort
-      mcp-hub-bin
       nixfmt
       prettierd
       shfmt

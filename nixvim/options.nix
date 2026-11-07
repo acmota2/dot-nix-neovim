@@ -3,10 +3,10 @@
   number = true;
   relativenumber = true;
   # tab stuff
-  shiftwidth = 2;
-  softtabstop = 2;
-  tabstop = 2;
   expandtab = true;
+  shiftwidth = 4;
+  softtabstop = 4;
+  tabstop = 4;
   smartindent = true;
   # search
   hlsearch = true;
