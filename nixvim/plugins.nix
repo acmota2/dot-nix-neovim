@@ -123,6 +123,9 @@
     };
     keymaps = {
       "<leader>ff" = "find_files";
+      "<leader>fF" = ''
+        lua = require('telescope.builtin').find_files({ hidden = false, no_ignore = false })
+      '';
       "<leader>b" = "buffers";
       "<leader>rg" = "live_grep";
       "<leader>e" = "file_browser";
