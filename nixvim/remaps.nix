@@ -30,6 +30,14 @@
     };
   }
 
+  # activate spelling
+  {
+    mode = "n";
+    key = "<leader>uk";
+    action = "<cmd>setlocal spell!<CR>";
+    options.desc = "Toggle Spell Check";
+  }
+
   # diffing
   {
     mode = "n";
@@ -76,41 +84,4 @@
     action = "Nzzzv";
   }
 
-  # codecompanion remaps
-  {
-    mode = [
-      "n"
-      "v"
-    ];
-    key = "<leader>ca";
-    action = "<cmd>CodeCompanionActions<cr>";
-    options = {
-      silent = true;
-      noremap = true;
-      desc = "CodeCompanion Actions";
-    };
-  }
-  {
-    mode = [
-      "n"
-      "v"
-    ];
-    key = "<leader>cc";
-    action = "<cmd>CodeCompanion<cr>";
-    options = {
-      silent = true;
-      noremap = true;
-      desc = "CodeCompanion Inline Assistant";
-    };
-  }
-  {
-    mode = "n";
-    key = "<leader>cb";
-    action = "<cmd>CodeCompanionChat Toggle<cr>";
-    options = {
-      silent = true;
-      noremap = true;
-      desc = "CodeCompanion Chat Buffer";
-    };
-  }
 ]

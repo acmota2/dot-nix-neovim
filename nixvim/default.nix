@@ -35,6 +35,21 @@
         pattern = [ "*.ebnf" ];
         command = "setfiletype ebnf";
       }
+      {
+        event = "FileType";
+        pattern = [
+          "markdown"
+          "text"
+          "gitcommit"
+          "typst"
+          "tex"
+        ];
+        callback.__raw = ''
+          function()
+            vim.opt_local.spell = true
+          end
+        '';
+      }
     ];
 
     diagnostic.settings = {

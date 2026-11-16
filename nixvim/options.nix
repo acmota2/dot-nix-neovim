@@ -1,4 +1,6 @@
 {
+  # spelling
+  spelllang = [ "en_uk" ];
   # numbers
   number = true;
   relativenumber = true;
